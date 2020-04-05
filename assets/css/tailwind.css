@@ -3,3 +3,28 @@
 @import 'tailwindcss/components';
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
+
+.separator {
+    position: relative;
+    clip-path: polygon(
+            0 100%,
+            100% 0%,
+            100% 100%
+    );
+}
+
+.roboto {
+    font-family: Roboto, sans-serif;
+}
+
+.roboto-condensed {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.flip-x {
+    transform: scaleX(-1);
+}
+
+.darken {
+    filter: brightness(70%);
+}
