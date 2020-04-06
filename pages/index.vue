@@ -1,10 +1,5 @@
 <template>
-    <section>
-        <navbar-wind/>
-        <hero-wind/>
-        <slanted-break-wind/>
-        <paragraph-wind/>
-    </section>
+    <windsock-ui/>
 </template>
 
 <script>
@@ -13,9 +8,10 @@
     import HeroWind from "../components/HeroWind";
     import SlantedBreakWind from "../components/SlantedBreakWind";
     import ParagraphWind from "../components/ParagraphWind";
+    import WindsockUi from "../components/WindsockUi";
     export default {
         name: "index.vue",
-        components: {ParagraphWind, SlantedBreakWind, NavbarWind, HeroWind}
+        components: {WindsockUi, ParagraphWind, SlantedBreakWind, NavbarWind, HeroWind}
     }
 
 </script>

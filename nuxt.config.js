@@ -41,7 +41,16 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
+    proxy: [
+
+        ['/cms', {
+            target: 'http://localhost:8080',
+            pathRewrite: {'^/cms': '/'}
+        }]
+    ],
   /*
   ** Build configuration
   */
