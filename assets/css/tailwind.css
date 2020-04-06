@@ -21,6 +21,10 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+.open-sans {
+    font-family: 'Open Sans';
+}
+
 .flip-x {
     transform: scaleX(-1);
 }

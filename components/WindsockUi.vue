@@ -13,14 +13,17 @@
     import HeroWind from "@/components/HeroWind";
     import SlantedBreakWind from "@/components/SlantedBreakWind";
     import ParagraphWind from "@/components/ParagraphWind";
+    import CardsWind from "@/components/CardsWind";
+    import FooterWind from "@/components/FooterWind";
     import axios from "axios";
 
     export default {
         name: "WindsockUi",
-        components: {ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind},
+        components: {ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind},
         data() {
             return {
-                cmsData: {}
+                cmsData: {},
+                pageTitle: ''
             }
         },
         mounted() {
@@ -30,8 +33,15 @@
             async fetchData() {
                 const result = await axios.get('/cms/data/www.windsockui.com');
                 this.cmsData = result.data;
+                this.pageTitle = this.cmsData.page.title;
                 console.log (result.data)
             }
+        },
+        head() {
+            return {
+                title: this.pageTitle
+            }
+
         }
     }
 </script>
