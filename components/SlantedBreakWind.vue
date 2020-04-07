@@ -1,10 +1,10 @@
 <template>
-    <div class="separator z-20"/>
+    <div class="separator bg-gray-900 z-20 h-10 -mt-10 md:h-12 md:-mt-12 lg:h-16 lg:-mt-16"/>
 </template>
 
 <script>
     export default {
-        name: "SlantedBreakWind"
+        name: "SlantedBreakWind",
     }
 </script>
 

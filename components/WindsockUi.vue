@@ -1,8 +1,11 @@
 <template>
     <section>
-        <div v-for="(item, index) in cmsData.components">
-            <component :ref="item.id" v-bind:is="item.title" :class="cmsData.layout[item.id] && cmsData.layout[item.id].class"></component>
-        </div>
+        <component
+            :ref="item.id"
+            v-bind:is="item.title"
+            :key="item.id"
+            v-for="(item, index) in cmsData.components"
+            @hook:mounted="addClasses(item.id)"></component>
     </section>
 </template>
 
@@ -24,6 +27,7 @@
             return {
                 cmsData: {},
                 pageTitle: ''
+
             }
         },
         mounted() {
@@ -34,8 +38,32 @@
                 const result = await axios.get('/cms/data/www.windsockui.com');
                 this.cmsData = result.data;
                 this.pageTitle = this.cmsData.page.title;
-                console.log (result.data); /*@TODO: Remove me*/
+            },
+            addClasses(id) {
+
+                let oldClasses = this.$refs[id][0].$el.classList;
+                let newClasses = this.cmsData.layout[id] && this.cmsData.layout[id].class.split(" ");
+
+                if (newClasses) {
+                    oldClasses.remove(...oldClasses);
+                    for (let i in Object.getOwnPropertyNames(newClasses)) {
+                        let clazz = newClasses[i];
+                        if (clazz) {
+                            oldClasses.add(clazz);
+                        }
+                    }
+                }
+
+            },
+            search(array, string) {
+                let j = [];
+                for (let i in array) {
+                    if (array[i].includes(string)) {
+
+                    }
+                }
             }
+
         },
         head() {
             return {
