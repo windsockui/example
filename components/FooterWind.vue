@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full h-64 bg-gray-800 mt-20"></section>
+    <section class="w-full h-64 bg-gray-800"></section>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
     <section>
         <div v-for="(item, index) in cmsData.components">
-            <component v-bind:is="item"></component>
+            <component :ref="item.id" v-bind:is="item.title" :class="cmsData.layout[item.id] && cmsData.layout[item.id].class"></component>
         </div>
     </section>
 </template>
@@ -34,18 +34,13 @@
                 const result = await axios.get('/cms/data/www.windsockui.com');
                 this.cmsData = result.data;
                 this.pageTitle = this.cmsData.page.title;
-                console.log (result.data)
+                console.log (result.data); /*@TODO: Remove me*/
             }
         },
         head() {
             return {
                 title: this.pageTitle
             }
-
         }
     }
 </script>
-
-<style scoped>
-
-</style>
