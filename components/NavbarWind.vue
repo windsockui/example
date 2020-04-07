@@ -13,6 +13,6 @@
 
 <script>
     export default {
-        name: "NavbarWind"
+        name: "NavbarWind",
     }
 </script>

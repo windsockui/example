@@ -1,10 +1,14 @@
 <template>
     <section>
+        <div class="container mx-auto relative z-30 h-16 overflow-visible -mb-16 pl-56 flex">
+            <div class="flex items-center text-gray-500"> <input type="checkbox" class="m-2" v-model="editing"> Editing</div>
+        </div>
         <component
             :ref="item.id"
             v-bind:is="item.title"
             :key="item.id"
             v-for="(item, index) in cmsData.components"
+            :editing="editing"
             @hook:mounted="addClasses(item.id)"></component>
     </section>
 </template>
@@ -26,8 +30,8 @@
         data() {
             return {
                 cmsData: {},
-                pageTitle: ''
-
+                pageTitle: '',
+                editing: false
             }
         },
         mounted() {

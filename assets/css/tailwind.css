@@ -4,6 +4,23 @@
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
 
+*:focus {
+    outline: none;
+}
+
+.editable {
+    border: 1px dashed rgba(255,255,255,0);
+}
+
+.editable.editing:hover {
+    border: 1px dashed rgba(255,255,255,0.5);
+}
+
+.editable.editing:focus {
+    border: 1px dashed rgba(255,255,255,1);
+}
+
+
 .separator {
     position: relative;
     clip-path: polygon(
@@ -12,6 +29,7 @@
             100% 100%
     );
 }
+
 
 .roboto {
     font-family: Roboto, sans-serif;
