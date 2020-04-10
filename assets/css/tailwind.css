@@ -20,6 +20,9 @@
     border: 1px dashed rgba(255,255,255,1);
 }
 
+.disable-selection {
+    user-select: none;
+}
 
 .separator {
     position: relative;

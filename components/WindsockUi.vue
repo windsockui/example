@@ -81,7 +81,10 @@
         },
         head() {
             return {
-                title: this.pageTitle
+                title: this.pageTitle,
+                bodyAttrs: {
+                    class: this.editing ? 'disable-selection' : ''
+                }
             }
         }
     }
