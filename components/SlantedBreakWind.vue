@@ -10,4 +10,13 @@
 
 <style scoped>
 
+    .separator {
+        position: relative;
+        clip-path: polygon(
+                0 100%,
+                100% 0%,
+                100% 100%
+        );
+    }
+
 </style>

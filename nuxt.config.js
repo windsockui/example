@@ -40,7 +40,7 @@ export default {
     fontawesome: {
         component: 'fa',
         icons: {
-            solid: ['faGripVertical', 'faUpload', 'faTimes']
+            solid: ['faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt']
         }
     },
     modules: [
@@ -63,5 +63,9 @@ export default {
         */
         extend(config, ctx) {
         }
+    },
+    server: {
+        port: 3000,
+        host: '0.0.0.0'
     }
 }

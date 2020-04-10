@@ -1,6 +1,6 @@
 <template>
     <section>
-        <wind-toolbar v-if="editing" @close="editing = false"/>
+        <windsock-toolbar v-if="editing" @close="editing = false"/>
         <component
             :ref="item.id"
             v-bind:is="item.title"
@@ -21,11 +21,11 @@
     import CardsWind from "@/components/CardsWind";
     import FooterWind from "@/components/FooterWind";
     import axios from "axios";
-    import WindToolbar from "@/components/WindToolbar";
+    import WindsockToolbar from "@/components/WindsockToolbar";
 
     export default {
         name: "WindsockUi",
-        components: {WindToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind},
+        components: {WindsockToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind},
         data() {
             return {
                 cmsData: {},

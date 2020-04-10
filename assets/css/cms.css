@@ -1,0 +1,30 @@
+
+*:focus {
+    outline: none;
+}
+
+/* Preserve the border width so that stuff doesn't jump around when the border is not visible */
+.editable {
+    border: 1px dashed rgba(255,255,255,0);
+}
+
+/* dashed semi-visible on hover to indicate an item is editable */
+.editable.editing:hover {
+    border: 1px dashed rgba(255,255,255,0.5);
+}
+
+/* dashed fully-visible on focus to indicate that an item is being edited */
+.editable.editing:focus {
+    border: 1px dashed rgba(255,255,255,1);
+}
+
+/* Moving the little toolbar around is impossible */
+.disable-selection {
+    user-select: none;
+}
+
+/* Add the glass effect */
+.glass {
+    border:1px solid rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.9) linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.12) 25%, rgba(255,255,255,0.07) 50%,rgba(255,255,255,0.0) 50%,rgba(255,255,255,0.0) 100%);
+}
