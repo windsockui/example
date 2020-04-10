@@ -11,7 +11,7 @@ The `|front-end cms` aspect of `windsockui` features a main component that facil
 
 Other aspects of the system are the `|datastore` and the `|vue.js tailwind components`. Libraries will be extracted from this project and moved from `|example` to `|front-end cms`
 
-In this example, we're going to build the https://tailwindui.com (not up yet) web site.  
+In this example, we're going to build the https://windsockui.com (not up yet) web site.  
 
 ## Setup
 Work in progress. Watch this space.
