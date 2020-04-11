@@ -1,7 +1,7 @@
 <template>
-    <div ref="toolbar" class="absolute h-16 z-30 rounded-lg shadow-md flex glass" style="left:calc(100% - 300px); top:50px">
-        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-white cursor-move" @mousedown="startDrag" title="drag">
-            <fa icon="grip-vertical" class="text-green-700" />
+    <div ref="toolbar" class="absolute h-16 z-30 rounded-lg flex bg-black border-2 border-gray-700" style="left:calc(100% - 300px); top:50px">
+        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-green-700 hover:text-green-500 cursor-move" @mousedown="startDrag" title="drag">
+            <fa icon="grip-vertical" class="" />
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="Rollback">
             <fa icon="undo-alt" class="" />
