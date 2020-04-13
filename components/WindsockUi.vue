@@ -5,10 +5,12 @@
             :ref="item.id"
             v-bind:is="item.title"
             :key="item.id"
-            v-for="(item, index) in cmsData.components"
+            v-for="(item) in cmsData.components"
             :editing="editing"
+            :content="cmsData.content[item.id]"
             @hook:mounted="addClasses(item.id)">
         </component>
+        <div>{{cmsData.content}}</div>
     </section>
 </template>
 
@@ -47,7 +49,9 @@
         methods: {
             async fetchData() {
                 const result = await axios.get('/cms/data/www.windsockui.com');
+
                 this.cmsData = result.data;
+                console.log (this.cmsData);
                 this.pageTitle = this.cmsData.page.title;
             },
             checkEditMode() {

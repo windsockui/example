@@ -1,10 +1,8 @@
 <template>
     <section class="container mx-auto text-gray-500 roboto font-thin text-lg mt-8 lg:mt-16 leading-relaxed">
-        <h1 class="text-4xl roboto-condensed text-gray-400 mb-3 editable" :class="{'editing':editing}" :contenteditable="editing">Reconsider the way you view your CMS</h1>
-        <p class="editable" :class="{'editing':editing}" :contenteditable="editing">
-        Content management should be simple, yet it has become an massively ugly thing to try and get your head around.
-        tailwindui changes this all for you. Suddenly you can now add editable content areas to your web site that
-        follow the style and direction you want it to.
+        <h1 class="text-4xl roboto-condensed text-gray-400 mb-3 editable" :class="{'editing':editing}" :contenteditable="editing" :v-if="content.heading">{{content.heading}}</h1>
+        <p class="editable" :class="{'editing':editing}" :contenteditable="editing" :v-if="content.text">
+            {{content.text}}
         </p>
     </section>
 </template>
@@ -16,6 +14,12 @@
             "editing" : {
                 type: Boolean,
                 default: false,
+            },
+            "content": {
+                default: {
+                    heading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+                    text: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."
+                }
             }
         },
     }
