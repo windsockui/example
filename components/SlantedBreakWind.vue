@@ -13,9 +13,9 @@
     .separator {
         position: relative;
         clip-path: polygon(
-                0 102%,
-                100% 0%,
-                100% 102%
+            0 102%,
+            100% 0%,
+            100% 102%
         );
     }
 

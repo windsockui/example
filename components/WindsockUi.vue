@@ -10,9 +10,12 @@
             v-model="cmsData.content[item.id]"
             @hook:mounted="addClasses(item.id)">
         </component>
+        <!-- We can build template in a much more exciting way -->
+        <!--
+        <div>{{cmsData.content}}</div>
+        -->
     </section>
 </template>
-
 <script>
 
     import NavbarWind from "@/components/NavbarWind";
@@ -26,7 +29,8 @@
 
     export default {
         name: "WindsockUi",
-        components: {WindsockToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind},
+        components: {
+            WindsockToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind},
         data() {
             return {
                 cmsData: {},

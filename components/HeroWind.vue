@@ -4,13 +4,17 @@
             <h1 class="text-2xl md:text-4xl font-light roboto-condensed editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'title')" v-text="content.title"></h1>
             <p class="text-lg md:text-2xl roboto mt-1 md:mt-2 font-thin editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'subtitle')" v-text="content.subtitle"></p>
         </div>
-        <img :src="content.imageUrl" class="w-full h-full object-cover absolute left-0 top-0 darken object-top" alt="Sterile Insect Release Hopper"/>
+        <image-wind :src="content.imageUrl" :editing="editing" class="w-full h-full object-cover absolute left-0 top-0 darken object-top" alt="Sterile Insect Release Hopper"/>
     </div>
+
 </template>
 
 <script>
+
+    import ImageWind from "@/components/ImageWind";
     export default {
         name: "HeroWind",
+        components: {ImageWind},
         data() {
             return {
                 content: {}

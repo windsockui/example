@@ -40,7 +40,7 @@ export default {
     fontawesome: {
         component: 'fa',
         icons: {
-            solid: ['faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt']
+            solid: ['faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt', 'faCamera', 'faCameraRetro']
         }
     },
     modules: [
@@ -62,6 +62,7 @@ export default {
         ** You can extend webpack config here
         */
         extend(config, ctx) {
+            config.resolve.alias['vue'] = 'vue/dist/vue.common'
         }
     },
     server: {
