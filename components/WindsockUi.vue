@@ -7,10 +7,9 @@
             :key="item.id"
             v-for="(item) in cmsData.components"
             :editing="editing"
-            :content="cmsData.content[item.id]"
+            v-model="cmsData.content[item.id]"
             @hook:mounted="addClasses(item.id)">
         </component>
-        <div>{{cmsData.content}}</div>
     </section>
 </template>
 
@@ -51,7 +50,7 @@
                 const result = await axios.get('/cms/data/www.windsockui.com');
 
                 this.cmsData = result.data;
-                console.log (this.cmsData);
+                //console.log (this.cmsData);
                 this.pageTitle = this.cmsData.page.title;
             },
             checkEditMode() {
