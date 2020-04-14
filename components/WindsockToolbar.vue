@@ -1,5 +1,5 @@
 <template>
-    <div ref="toolbar" class="absolute h-16 z-30 rounded-lg flex bg-black-transparent border-2 border-gray-700" style="left:calc(100% - 300px); top:50px">
+    <div ref="toolbar" class="absolute h-16 z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700" style="left:calc(100% - 300px); top:50px">
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-green-700 hover:text-green-500 cursor-move" @mousedown="startDrag" title="drag">
             <fa icon="grip-vertical" class="" />
         </div>

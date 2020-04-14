@@ -10,6 +10,9 @@
             v-model="cmsData.content[item.id]"
             @hook:mounted="addClasses(item.id)">
         </component>
+        <windsock-modal v-if="modal">
+            <component :is="modal"/>
+        </windsock-modal>
         <!-- We can build template in a much more exciting way -->
         <!--
         <div>{{cmsData.content}}</div>
@@ -26,11 +29,13 @@
     import FooterWind from "@/components/FooterWind";
     import axios from "axios";
     import WindsockToolbar from "@/components/WindsockToolbar";
+    import WindsockModal from "@/components/WindsockModal";
+    import WindsockModalUrl from "@/components/WindsockModalUrl";
 
     export default {
         name: "WindsockUi",
         components: {
-            WindsockToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind},
+            WindsockModal, WindsockToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind, WindsockModalUrl},
         data() {
             return {
                 cmsData: {},
@@ -42,7 +47,8 @@
                     mouseUpListener: undefined
                 },
                 pageTitle: '',
-                editing: false
+                editing: false,
+                modal: 'windsock-modal-url'
             }
         },
         mounted() {

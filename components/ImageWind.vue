@@ -32,6 +32,7 @@
             imageEdit.$mount();
             if (this.editing)
                 this.editOverlay = this.$refs.image.insertAdjacentElement("afterend", imageEdit.$el);
+
         },
         watch: {
             editing: function(o, n) {
