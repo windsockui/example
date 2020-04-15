@@ -8,10 +8,12 @@
             v-for="(item) in cmsData.components"
             :editing="editing"
             v-model="cmsData.content[item.id]"
-            @hook:mounted="addClasses(item.id)">
+            @hook:mounted="addClasses(item.id)"
+            @openModal="openModal"
+        >
         </component>
-        <windsock-modal v-if="modal">
-            <component :is="modal"/>
+        <windsock-modal v-if="modalData.name">
+            <component :is="modalData.name" @answer="modalAnswered"/>
         </windsock-modal>
         <!-- We can build template in a much more exciting way -->
         <!--
@@ -48,7 +50,10 @@
                 },
                 pageTitle: '',
                 editing: false,
-                modal: 'windsock-modal-url'
+                modalData: {
+                    name: null,
+                    callback: null
+                }
             }
         },
         mounted() {
@@ -58,9 +63,7 @@
         methods: {
             async fetchData() {
                 const result = await axios.get('/cms/data/www.windsockui.com');
-
                 this.cmsData = result.data;
-                //console.log (this.cmsData);
                 this.pageTitle = this.cmsData.page.title;
             },
             checkEditMode() {
@@ -68,6 +71,14 @@
                 if (path.endsWith("/edit")) {
                     this.editing = true;
                 }
+            },
+            openModal(modalData) {
+                this.modalData.name = modalData.name;
+                this.modalData.callback = modalData.callback;
+            },
+            modalAnswered(value) {
+                this.modalData.name = null;
+                this.modalData.callback(value.data);
             },
             addClasses(id) {
                 let oldClasses = this.$refs[id][0].$el.classList;

@@ -5,6 +5,7 @@
             <p class="text-lg md:text-2xl roboto mt-1 md:mt-2 font-thin editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'subtitle')" v-text="content.subtitle"></p>
         </div>
         <image-wind :src="content.imageUrl" :editing="editing" class="w-full h-full object-cover absolute left-0 top-0 darken object-top" alt="Sterile Insect Release Hopper"/>
+        <windsock-edit-image-overlay v-if="editing" v-on="$listeners" />
     </div>
 
 </template>
@@ -12,12 +13,14 @@
 <script>
 
     import ImageWind from "@/components/ImageWind";
+    import WindsockEditImageOverlay from "./WindsockEditImageOverlay";
     export default {
         name: "HeroWind",
-        components: {ImageWind},
+        components: {WindsockEditImageOverlay, ImageWind},
         data() {
             return {
-                content: {}
+                content: {},
+                editHover: false
             }
         },
         props: {
