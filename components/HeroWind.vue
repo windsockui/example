@@ -4,8 +4,8 @@
             <h1 class="text-2xl md:text-4xl font-light roboto-condensed editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'title')" v-text="content.title"></h1>
             <p class="text-lg md:text-2xl roboto mt-1 md:mt-2 font-thin editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'subtitle')" v-text="content.subtitle"></p>
         </div>
-        <image-wind :src="content.imageUrl" :editing="editing" class="w-full h-full object-cover absolute left-0 top-0 darken object-top" alt="Sterile Insect Release Hopper"/>
-        <windsock-edit-image-overlay v-if="editing" v-on="$listeners" />
+        <image-wind :src="content.imageUrl" class="w-full h-full object-cover absolute left-0 top-0 darken object-top" alt="Sterile Insect Release Hopper"/>
+        <windsock-edit-image-overlay v-if="editing" v-on="$listeners" @imageUrlChanged="imageUrlChanged" />
     </div>
 
 </template>
@@ -45,6 +45,10 @@
         methods: {
             update(event, item) {
                 this.content[item] = event.target.innerText;
+                this.$emit('input', this.content);
+            },
+            imageUrlChanged(url) {
+                this.content.imageUrl = url;
                 this.$emit('input', this.content);
             }
         }

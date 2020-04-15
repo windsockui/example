@@ -17,8 +17,9 @@
             openModal(modalName) {
                 this.$emit('openModal', {name:modalName, callback:this.modalResponse});
             },
-            modalResponse(data) {
-                console.log (data);
+            modalResponse(answer) {
+                if (answer.status === 'ok')
+                    this.$emit('imageUrlChanged', answer.data.url)
             }
         }
     }

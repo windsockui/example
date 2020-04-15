@@ -16,9 +16,8 @@
             <component :is="modalData.name" @answer="modalAnswered"/>
         </windsock-modal>
         <!-- We can build template in a much more exciting way -->
-        <!--
+
         <div>{{cmsData.content}}</div>
-        -->
     </section>
 </template>
 <script>
@@ -76,9 +75,9 @@
                 this.modalData.name = modalData.name;
                 this.modalData.callback = modalData.callback;
             },
-            modalAnswered(value) {
+            modalAnswered(answer) {
                 this.modalData.name = null;
-                this.modalData.callback(value.data);
+                this.modalData.callback(answer);
             },
             addClasses(id) {
                 let oldClasses = this.$refs[id][0].$el.classList;
