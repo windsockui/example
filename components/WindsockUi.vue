@@ -1,6 +1,6 @@
 <template>
     <section>
-        <windsock-toolbar v-if="editing" @close="editing = false"/>
+        <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent"/>
         <component
             :ref="item.id"
             v-bind:is="item.title"
@@ -13,7 +13,7 @@
         >
         </component>
         <windsock-modal v-if="modalData.name">
-            <component :is="modalData.name" @answer="modalAnswered"/>
+            <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
         </windsock-modal>
         <!-- We can build template in a much more exciting way -->
 
@@ -32,14 +32,26 @@
     import WindsockToolbar from "@/components/WindsockToolbar";
     import WindsockModal from "@/components/WindsockModal";
     import WindsockModalUrl from "@/components/WindsockModalUrl";
+    import WindsockModalAlert from "./WindsockModalAlert";
 
     export default {
         name: "WindsockUi",
         components: {
-            WindsockModal, WindsockToolbar, ParagraphWind, SlantedBreakWind, HeroWind, NavbarWind, CardsWind, FooterWind, WindsockModalUrl},
+            WindsockModal,
+            WindsockToolbar,
+            ParagraphWind,
+            SlantedBreakWind,
+            HeroWind,
+            NavbarWind,
+            CardsWind,
+            FooterWind,
+            WindsockModalUrl,
+            WindsockModalAlert
+        },
         data() {
             return {
                 cmsData: {},
+                originalCmsData: {},
                 toolbar: {
                     dragging: false,
                     offsetX: 0,
@@ -51,7 +63,8 @@
                 editing: false,
                 modalData: {
                     name: null,
-                    callback: null
+                    callback: null,
+                    data: null
                 }
             }
         },
@@ -60,6 +73,11 @@
             this.fetchData();
         },
         methods: {
+            toolbarCancel() {
+                this.editing = false;
+                const path = this.$route.path;
+                this.$router.push('/' + path.substring(0, path.lastIndexOf("/edit")));
+            },
             async fetchData() {
                 const result = await axios.get('/cms/data/www.windsockui.com');
                 this.cmsData = result.data;
@@ -72,12 +90,14 @@
                 }
             },
             openModal(modalData) {
-                this.modalData.name = modalData.name;
-                this.modalData.callback = modalData.callback;
+                this.modalData = modalData
             },
             modalAnswered(answer) {
                 this.modalData.name = null;
-                this.modalData.callback(answer);
+                this.modalData.callback && this.modalData.callback(answer);
+            },
+            uploadContent(data) {
+                this.openModal({name:'windsock-modal-alert', data:'Pretending to upload', callback:data.callback});
             },
             addClasses(id) {
                 let oldClasses = this.$refs[id][0].$el.classList;
@@ -91,14 +111,6 @@
                             oldClasses.add(clazz);
                         }
                     }
-                }
-            }
-        },
-        watch: {
-            editing: function(n) {
-                if (n === false) {
-                    const path = this.$route.path;
-                    this.$router.push('/' + path.substring(0, path.lastIndexOf("/edit")));
                 }
             }
         },

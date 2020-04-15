@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="h-16 relative z-20 shadow-lg bg-gray-900" />
+        <div class="h-16 relative z-20 shadow-md bg-gray-900" />
         <section class="container mx-auto -mt-16 relative z-20">
             <div class="flex w-full border-1 h-16">
                 <div class="flex flex-shrink-0 items-center w-48 p-6 bg-gray-800 cursor-pointer" @click="$router.push('/edit')">
