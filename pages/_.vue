@@ -1,5 +1,5 @@
 <template>
-    <windsock-ui/>
+    <windsock-ui domain="www.windsockui.com"/>
 </template>
 
 <script>

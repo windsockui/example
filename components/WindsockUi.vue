@@ -16,11 +16,15 @@
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
         </windsock-modal>
         <!-- We can build template in a much more exciting way -->
-
+        <!--
         <div>{{cmsData.content}}</div>
+        -->
     </section>
 </template>
 <script>
+
+    import axios from "axios";
+    import {v5} from 'uuid';
 
     import NavbarWind from "@/components/NavbarWind";
     import HeroWind from "@/components/HeroWind";
@@ -28,7 +32,6 @@
     import ParagraphWind from "@/components/ParagraphWind";
     import CardsWind from "@/components/CardsWind";
     import FooterWind from "@/components/FooterWind";
-    import axios from "axios";
     import WindsockToolbar from "@/components/WindsockToolbar";
     import WindsockModal from "@/components/WindsockModal";
     import WindsockModalUrl from "@/components/WindsockModalUrl";
@@ -48,9 +51,17 @@
             WindsockModalUrl,
             WindsockModalAlert
         },
+        props: {
+            'domain' : {
+                required: true,
+            }
+        },
         data() {
             return {
-                cmsData: {},
+                cmsData: {
+                    page:{}, components:[], layout:{}, content:{}
+                },
+                SessionId: undefined,
                 originalCmsData: {},
                 toolbar: {
                     dragging: false,
@@ -70,18 +81,25 @@
         },
         mounted() {
             this.checkEditMode();
-            this.fetchData();
+            this.fetchContent();
         },
         methods: {
-            toolbarCancel() {
-                this.editing = false;
-                const path = this.$route.path;
-                this.$router.push('/' + path.substring(0, path.lastIndexOf("/edit")));
+            async fetchContent() {
+                const result = await axios.get('/cms/data/' + this.domain + this.$route.path.replace("/edit"));
+                let dataReceived = result.data.json;
+                if (dataReceived.page) {
+                    this.cmsData.page = dataReceived.page;
+                    this.pageTitle = this.cmsData.page.title;
+                }
+                if (dataReceived.components) this.cmsData.components = dataReceived.components;
+                if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
+                if (dataReceived.content) this.cmsData.content = dataReceived.content;
             },
-            async fetchData() {
-                const result = await axios.get('/cms/data/www.windsockui.com');
-                this.cmsData = result.data;
-                this.pageTitle = this.cmsData.page.title;
+            async uploadContent(data) {
+                const result = await axios.put('/cms/data/' + this.domain + this.$route.path.replace("/edit"), this.cmsData);
+                if (result.status === 200) {
+                    data.callback();
+                }
             },
             checkEditMode() {
                 const path = this.$route.path;
@@ -96,8 +114,10 @@
                 this.modalData.name = null;
                 this.modalData.callback && this.modalData.callback(answer);
             },
-            uploadContent(data) {
-                this.openModal({name:'windsock-modal-alert', data:'Pretending to upload', callback:data.callback});
+            toolbarCancel() {
+                this.editing = false;
+                const path = this.$route.path;
+                this.$router.push('/' + path.substring(0, path.lastIndexOf("/edit")));
             },
             addClasses(id) {
                 let oldClasses = this.$refs[id][0].$el.classList;
