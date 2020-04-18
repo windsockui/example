@@ -1,6 +1,6 @@
 <template>
     <section>
-        <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent"/>
+        <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent" />
         <component
             :ref="item.id"
             v-bind:is="item.title"
@@ -11,46 +11,52 @@
             @hook:mounted="addClasses(item.id)"
             @openModal="openModal"
         >
+            <template v-slot:default="props">
+                <windsock-component-toolbar v-if="editing" :buttons="props.buttons"/>
+            </template>
         </component>
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
         </windsock-modal>
-        <!-- We can build template in a much more exciting way -->
-        <!--
-        <div>{{cmsData.content}}</div>
-        -->
     </section>
 </template>
 <script>
 
     import axios from "axios";
 
-    import Error404 from "@/components/Error404";
+    // Front-end Components
     import NavbarWind from "@/components/NavbarWind";
     import HeroWind from "@/components/HeroWind";
     import SlantedBreakWind from "@/components/SlantedBreakWind";
     import ParagraphWind from "@/components/ParagraphWind";
     import CardsWind from "@/components/CardsWind";
     import FooterWind from "@/components/FooterWind";
+
+    // CMS Components
+    import Windsock404 from "@/components/Windsock404";
     import WindsockToolbar from "@/components/WindsockToolbar";
     import WindsockModal from "@/components/WindsockModal";
     import WindsockModalUrl from "@/components/WindsockModalUrl";
-    import WindsockModalAlert from "./WindsockModalAlert";
+    import WindsockModalAlert from "@/components/WindsockModalAlert";
+    import WindsockComponentToolbar from "@/components/WindsockComponentToolbar";
 
     export default {
         name: "WindsockUi",
         components: {
-            WindsockModal,
-            WindsockToolbar,
-            ParagraphWind,
-            SlantedBreakWind,
-            HeroWind,
-            NavbarWind,
             CardsWind,
             FooterWind,
+            HeroWind,
+            NavbarWind,
+            ParagraphWind,
+            SlantedBreakWind,
+
+            Windsock404,
+            WindsockComponentToolbar,
+            WindsockModal,
             WindsockModalUrl,
             WindsockModalAlert,
-            Error404
+            WindsockToolbar,
+
         },
         props: {
             'domain' : {
@@ -100,14 +106,22 @@
 
                 } catch (error) {
                     if (error.response.status === 404) {
-                        this.cmsData.components.push({id:'error404',title:'error404'});
+                        this.cmsData.components.push({id:'windsock404',title:'windsock404'});
                     }
                 }
 
             },
             async uploadContent(data) {
                 const result = await axios.put(this.domainPath(), this.cmsData);
+                let dataReceived = result.data.json;
                 if (result.status === 200) {
+                    if (dataReceived.page) {
+                        this.cmsData.page = dataReceived.page;
+                        this.pageTitle = this.cmsData.page.title;
+                    }
+                    if (dataReceived.components) this.cmsData.components = dataReceived.components;
+                    if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
+                    if (dataReceived.content) this.cmsData.content = dataReceived.content;
                     data.callback();
                 }
             },
@@ -142,7 +156,6 @@
                 this.editing = false;
                 const path = this.$route.path;
                 if (path.endsWith("/edit")) {
-                    console.log ('ends in edit');
                     const newPath = path.replace("/edit", '')
                     this.$router.push(newPath == '' ? '/' : newPath);
                 }

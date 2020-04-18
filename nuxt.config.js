@@ -40,7 +40,7 @@ export default {
     fontawesome: {
         component: 'fa',
         icons: {
-            solid: ['faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt', 'faCamera', 'faCameraRetro', 'faCheck', 'faExclamationTriangle', 'faSyncAlt']
+            solid: ['faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt', 'faCamera', 'faCameraRetro', 'faCheck', 'faExclamationTriangle', 'faSyncAlt', 'faArrowUp', 'faArrowDown', 'faTrashAlt']
         }
     },
     modules: [

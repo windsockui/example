@@ -4,10 +4,7 @@
 
 
 <script>
-
-    import Vue from 'vue';
-    import WindsockEditImageOverlay from "@/components/WindsockEditImageOverlay";
-
+    
     export default {
         name: "ImageWind",
         props: {

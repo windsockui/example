@@ -3,10 +3,10 @@
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-green-700 hover:text-green-500 cursor-move" @mousedown="startDrag" title="drag">
             <fa icon="grip-vertical" class="" />
         </div>
-        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="Rollback"  @click="openModal('windsock-modal-alert', 'Not yet implemented')">
+        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-800" title="rollback (coming soon)">
             <fa icon="undo-alt" class="" />
         </div>
-        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="save" @click="openModal('windsock-modal-alert', 'Not yet implemented')">
+        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-800" title="save (coming soon)">
             <fa icon="save"/>
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="publish" @click="upload">

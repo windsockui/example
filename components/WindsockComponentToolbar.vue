@@ -1,0 +1,27 @@
+<template>
+    <div ref="toolbar" class="absolute z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700 mt-3 ml-3">
+        <div class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="Rollback">
+            <fa icon="arrow-up" />
+        </div>
+        <div class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="save">
+            <fa icon="arrow-down" />
+        </div>
+        <div v-for="(item) in buttons" class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" @click="item.callback" :title="item.tooltip">
+            <fa :icon="item.icon"></fa>
+        </div>
+        <div class="flex items-center pl-3 pr-3 mt-2 mb-2 text-red-700 hover:text-red-500 cursor-pointer" title="save">
+            <fa icon="trash-alt" />
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "WindsockComponentToolbar",
+        props: {
+            'buttons': {
+                type: Array
+            }
+        }
+    }
+</script>
