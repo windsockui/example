@@ -22,11 +22,14 @@
     filter: brightness(70%);
 }
 
-
 .bg-black-transparent-85 {
     background-color: rgba(0,0,0,0.85);
 }
 
 .bg-black-transparent-50 {
     background-color: rgba(0,0,0,0.5);
+}
+
+.text-massive {
+    font-size: 10rem;
 }

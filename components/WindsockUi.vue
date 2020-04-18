@@ -24,8 +24,8 @@
 <script>
 
     import axios from "axios";
-    import {v5} from 'uuid';
 
+    import Error404 from "@/components/Error404";
     import NavbarWind from "@/components/NavbarWind";
     import HeroWind from "@/components/HeroWind";
     import SlantedBreakWind from "@/components/SlantedBreakWind";
@@ -49,7 +49,8 @@
             CardsWind,
             FooterWind,
             WindsockModalUrl,
-            WindsockModalAlert
+            WindsockModalAlert,
+            Error404
         },
         props: {
             'domain' : {
@@ -85,21 +86,44 @@
         },
         methods: {
             async fetchContent() {
-                const result = await axios.get('/cms/data/' + this.domain + this.$route.path.replace("/edit"));
-                let dataReceived = result.data.json;
-                if (dataReceived.page) {
-                    this.cmsData.page = dataReceived.page;
-                    this.pageTitle = this.cmsData.page.title;
+                let result = null;
+                try {
+                    result = await axios.get (this.domainPath());
+                    let dataReceived = result.data.json;
+                    if (dataReceived.page) {
+                        this.cmsData.page = dataReceived.page;
+                        this.pageTitle = this.cmsData.page.title;
+                    }
+                    if (dataReceived.components) this.cmsData.components = dataReceived.components;
+                    if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
+                    if (dataReceived.content) this.cmsData.content = dataReceived.content;
+
+                } catch (error) {
+                    if (error.response.status === 404) {
+                        this.cmsData.components.push({id:'error404',title:'error404'});
+                    }
                 }
-                if (dataReceived.components) this.cmsData.components = dataReceived.components;
-                if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
-                if (dataReceived.content) this.cmsData.content = dataReceived.content;
+
             },
             async uploadContent(data) {
-                const result = await axios.put('/cms/data/' + this.domain + this.$route.path.replace("/edit"), this.cmsData);
+                const result = await axios.put(this.domainPath(), this.cmsData);
                 if (result.status === 200) {
                     data.callback();
                 }
+            },
+            domainPath() {
+                let path = '';
+                path += '/cms/data/';
+                path += this.domain;
+                if (this.$route.path.endsWith("/edit")) {
+                    path += this.$route.path.replace('/edit', '');
+                } else {
+                    path += this.$route.path;
+                }
+                if (path.endsWith('/')) {
+                    path = path.substring(0, path.length - 1)
+                }
+                return path;
             },
             checkEditMode() {
                 const path = this.$route.path;
@@ -117,7 +141,11 @@
             toolbarCancel() {
                 this.editing = false;
                 const path = this.$route.path;
-                this.$router.push('/' + path.substring(0, path.lastIndexOf("/edit")));
+                if (path.endsWith("/edit")) {
+                    console.log ('ends in edit');
+                    const newPath = path.replace("/edit", '')
+                    this.$router.push(newPath == '' ? '/' : newPath);
+                }
             },
             addClasses(id) {
                 let oldClasses = this.$refs[id][0].$el.classList;
