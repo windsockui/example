@@ -50,7 +50,7 @@ export default {
     proxy: [
 
         ['/cms', {
-            target: 'http://localhost:8080',
+            target: 'http://datastore.windsockui.com',
             pathRewrite: {'^/cms': '/'}
         }]
     ],
