@@ -64,9 +64,5 @@ export default {
         extend(config, ctx) {
             config.resolve.alias['vue'] = 'vue/dist/vue.common'
         }
-    },
-    server: {
-        port: 3000,
-        host: '0.0.0.0'
     }
 }
