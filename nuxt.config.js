@@ -1,5 +1,9 @@
 export default {
     mode: 'universal',
+    env: {
+        domain: process.env.DOMAIN || 'www.windsockui.com',
+        databaseUrl: process.env.DATABASE_URL || 'http://localhost:8080'
+    },
     head: {
         title: process.env.npm_package_name || '',
         meta: [

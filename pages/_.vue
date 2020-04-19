@@ -1,5 +1,8 @@
 <template>
-    <windsock-ui domain="www.windsockui.com"/>
+    <div>
+    <windsock-ui :domain="domain"/>
+
+    </div>
 </template>
 
 <script>
@@ -9,9 +12,16 @@
         name: "index.vue",
         components: {WindsockUi},
         mounted() {
-            console.log (process.env.MARK || "Mark van Wyk");
-            console.log (process.env.DATABASE_URL);
-            console.log (process.env.DOMAIN);
+            console.log (this.domain);
+            console.log (this.databaseUrl);
+        },
+        computed: {
+            'domain': function() {
+                return process.env.domain;
+            },
+            'databaseUrl': function() {
+                return process.env.databaseUrl;
+            }
         }
     }
 
