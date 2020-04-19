@@ -14,7 +14,11 @@ Other aspects of the system are the `|datastore` and the `|vue.js tailwind compo
 In this example, we're going to build the https://windsockui.com (not up yet) web site.  
 
 ## Setup
-Work in progress. Watch this space.
+Be sure to set up a file called `.env` in the root, for your environment variables.
+```properties
+DOMAIN=www.windsockui.com
+DATABASE_URL=http://localhost:8080
+```
 
 ## Usage
 Work in progress. Watch this space.
