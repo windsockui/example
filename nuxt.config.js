@@ -1,8 +1,5 @@
 export default {
-    mode: 'spa',
-    /*
-    ** Headers of the page
-    */
+    mode: 'universal',
     head: {
         title: process.env.npm_package_name || '',
         meta: [
@@ -35,7 +32,8 @@ export default {
     */
     buildModules: [
         '@nuxtjs/tailwindcss',
-        '@nuxtjs/fontawesome'
+        '@nuxtjs/fontawesome',
+        '@nuxtjs/dotenv',
     ],
     fontawesome: {
         component: 'fa',
@@ -50,7 +48,7 @@ export default {
     proxy: [
 
         ['/cms', {
-            target: 'http://datastore.windsockui.com',
+            target: process.env.DATABASE_URL || 'http://localhost:8080',
             pathRewrite: {'^/cms': '/'}
         }]
     ],

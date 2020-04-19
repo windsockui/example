@@ -7,7 +7,12 @@
     import WindsockUi from "../components/WindsockUi";
     export default {
         name: "index.vue",
-        components: {WindsockUi}
+        components: {WindsockUi},
+        mounted() {
+            console.log (process.env.MARK || "Mark van Wyk");
+            console.log (process.env.DATABASE_URL);
+            console.log (process.env.DOMAIN);
+        }
     }
 
 </script>
