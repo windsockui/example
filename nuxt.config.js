@@ -1,5 +1,5 @@
 export default {
-    mode: 'universal',
+    mode: 'spa',
     env: {
         domain: process.env.DOMAIN || 'www.windsockui.com',
         databaseUrl: process.env.DATABASE_URL || 'http://localhost:8080'
@@ -31,7 +31,8 @@ export default {
     /*
     ** Plugins to load before mounting the App
     */
-    plugins: [],
+    plugins: [
+    ],
     /*
     ** Nuxt.js dev-modules
     */
@@ -43,7 +44,11 @@ export default {
     fontawesome: {
         component: 'fa',
         icons: {
-            solid: ['faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt', 'faCamera', 'faCameraRetro', 'faCheck', 'faExclamationTriangle', 'faSyncAlt', 'faArrowUp', 'faArrowDown', 'faTrashAlt']
+            solid: [
+                'faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt', 'faCamera',
+                'faCheck', 'faExclamationTriangle', 'faSyncAlt', 'faArrowUp', 'faArrowDown', 'faTrashAlt',
+                'faPlus'
+            ]
         }
     },
     modules: [
@@ -61,7 +66,8 @@ export default {
     purgeCSS: {
         whitelist: 'a',
         whitelistPatterns: [/svg.*/],
-        purgeCSSInDev: true
+        //purgeCSSInDev: true
+        enabled: true
     },
     /*
     ** Build configuration

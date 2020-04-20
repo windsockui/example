@@ -1,8 +1,5 @@
 <template>
-    <div>
     <windsock-ui :domain="domain"/>
-
-    </div>
 </template>
 
 <script>
@@ -17,6 +14,11 @@
             },
             'databaseUrl': function() {
                 return process.env.databaseUrl;
+            }
+        },
+        head() {
+            return {
+                title:'Hello'
             }
         }
     }

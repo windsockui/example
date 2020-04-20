@@ -1,7 +1,7 @@
 {
-    "name": "windsockui",
-    "version": "1.0.0",
-    "description": "My fine Nuxt.js project",
+    "name": "windosockui",
+    "version": "0.0.9",
+    "description": "WindosckUI front-end inline CMS toolbox",
     "author": "Mark van Wyk",
     "private": true,
     "scripts": {
