@@ -1,16 +1,16 @@
 <template>
     <div ref="toolbar" class="absolute z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700 mt-3 ml-3">
         <div class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="Rollback">
-            <fa icon="arrow-up" class="w-2" />
+            <fa icon="arrow-up" class="text-md" />
         </div>
         <div class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="save">
-            <fa icon="arrow-down" class="w-2"/>
+            <fa icon="arrow-down" class="text-md"/>
         </div>
         <div v-for="(item) in buttons" class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" @click="item.callback" :title="item.tooltip">
-            <fa :icon="item.icon" class="w-2"></fa>
+            <fa :icon="item.icon" class="text-md"></fa>
         </div>
         <div class="flex items-center pl-3 pr-3 mt-2 mb-2 text-red-700 hover:text-red-500 cursor-pointer" title="save">
-            <fa icon="trash-alt" class="w-2" />
+            <fa icon="trash-alt" class="text-md" />
         </div>
     </div>
 </template>

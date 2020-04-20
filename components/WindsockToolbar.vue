@@ -1,21 +1,21 @@
 <template>
-    <div ref="toolbar" class="absolute h-16 z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700" style="left:calc(100% - 300px); top:50px">
+    <div ref="toolbar" class="absolute h-16 z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700 text-md" style="left:calc(100% - 300px); top:50px">
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-green-700 hover:text-green-500 cursor-move" @mousedown="startDrag" title="drag">
-            <fa icon="grip-vertical" class="w-2" />
+            <fa icon="grip-vertical" class="text-md" />
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-800" title="rollback (coming soon)">
-            <fa icon="undo-alt" class="w-2" />
+            <fa icon="undo-alt" class="text-md" />
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-800" title="save (coming soon)">
-            <fa icon="save" class="w-2"/>
+            <fa icon="save" class="text-md"/>
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="publish" @click="upload">
-            <fa icon="upload" class="w-2" v-if="toolbar.uploading === 'no'"/>
-            <fa icon="sync-alt" class="w-2 text-yellow-500 rotating" v-if="toolbar.uploading === 'uploading'"/>
-            <fa icon="check" class="w-2 text-green-500" v-if="toolbar.uploading === 'uploaded'"/>
+            <fa icon="upload" class="text-md" v-if="toolbar.uploading === 'no'"/>
+            <fa icon="sync-alt" class="text-md text-yellow-500 rotating" v-if="toolbar.uploading === 'uploading'"/>
+            <fa icon="check" class="text-md text-green-500" v-if="toolbar.uploading === 'uploaded'"/>
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-gray-500 text-gray-500 hover:text-white cursor-pointer" @click="$emit('close')" title="exit editor">
-            <fa icon="times" class="w-2" />
+            <fa icon="times" class="text-md" />
         </div>
     </div>
 </template>

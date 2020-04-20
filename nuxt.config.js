@@ -26,7 +26,8 @@ export default {
     /*
     ** Global CSS
     */
-    css: [],
+    css: [
+    ],
     /*
     ** Plugins to load before mounting the App
     */
@@ -47,7 +48,8 @@ export default {
     },
     modules: [
         '@nuxtjs/axios',
-        '@nuxtjs/proxy'
+        '@nuxtjs/proxy',
+        'nuxt-purgecss'
     ],
     proxy: [
 
@@ -56,10 +58,16 @@ export default {
             pathRewrite: {'^/cms': '/'}
         }]
     ],
+    purgeCSS: {
+        whitelist: 'a',
+        whitelistPatterns: [/svg.*/],
+        purgeCSSInDev: true
+    },
     /*
     ** Build configuration
     */
     build: {
+        extractCSS: true,
         /*
         ** You can extend webpack config here
         */

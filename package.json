@@ -18,6 +18,8 @@
         "@nuxtjs/dotenv": "^1.4.1",
         "@nuxtjs/fontawesome": "^1.1.2",
         "nuxt": "^2.0.0",
+        "nuxt-purgecss": "^0.2.1",
+        "purgecss": "^2.1.2",
         "uuid": "^7.0.3"
     },
     "devDependencies": {

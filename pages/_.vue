@@ -11,10 +11,6 @@
     export default {
         name: "index.vue",
         components: {WindsockUi},
-        mounted() {
-            console.log (this.domain);
-            console.log (this.databaseUrl);
-        },
         computed: {
             'domain': function() {
                 return process.env.domain;
