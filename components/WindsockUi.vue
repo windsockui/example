@@ -2,18 +2,18 @@
     <section>
         <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent" />
         <component
+            v-for="(item, index) in cmsData.components"
             :ref="item.id"
             v-bind:is="item.title"
-            :key="item.id"
-            v-for="(item) in cmsData.components"
+            :key="(item.id)"
             :editing="editing"
             v-model="cmsData.content[item.id]"
             @hook:mounted="addClasses(item.id)"
             @openModal="openModal"
+            @componentRemove="cmsData.components.splice(index, 1)"
+            @componentUp="moveComponentUp(index)"
+            @componentDown="moveComponentDown(index)"
         >
-            <template v-slot:default="props">
-                <windsock-component-toolbar v-if="editing" :buttons="props.buttons"/>
-            </template>
         </component>
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
@@ -173,6 +173,24 @@
                         }
                     }
                 }
+            },
+            moveComponentUp(index) {
+                let n = this.cmsData.components.slice();
+                if (n[index - 1]) {
+                    let temp = n[index - 1];
+                    n[index - 1] = n[index];
+                    n[index] = temp;
+                }
+                this.cmsData.components = n;
+            },
+            moveComponentDown(index) {
+                let n = this.cmsData.components.slice();
+                if (n[index + 1]) {
+                    let temp = n[index + 1];
+                    n[index + 1] = n[index];
+                    n[index] = temp;
+                }
+                this.cmsData.components = n;
             }
         },
         head() {
