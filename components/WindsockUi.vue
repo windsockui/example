@@ -141,7 +141,6 @@
                     if (dataReceived.components) this.cmsData.components = dataReceived.components;
                     if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
                     if (dataReceived.content) this.cmsData.content = dataReceived.content;
-                    console.log (this.cmsData);
                     data.callback();
                 }
             },
