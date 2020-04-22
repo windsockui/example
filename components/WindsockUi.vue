@@ -3,6 +3,7 @@
         <transition name="fade">
             <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent" @addComponent="addComponent"/>
         </transition>
+        <!-- @TODO: This only allows stacked sections and divs one atop another. Need to allow templates -->
         <transition-group name="components" tag="div">
             <component
                 v-for="(item, index) in cmsData.components"
@@ -18,13 +19,16 @@
                 <template slot-scope="{buttons, clazz}">
                     <windsock-component-toolbar
                         v-if="editing" :buttons="buttons" :class="clazz"
-                        @componentRemove="cmsData.components.splice(index, 1)"
+                        @componentRemove="removeComponent(item.id)"
                         @componentUp="moveComponentUp(index)"
                         @componentDown="moveComponentDown(index)"
                     />
                 </template>
             </component>
         </transition-group>
+        <!--
+        <pre class="text-white">{{cmsData}}</pre>
+        -->
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
         </windsock-modal>
@@ -54,6 +58,7 @@
 
     export default {
         name: "WindsockUi",
+        /* @TODO: These components must all load dynamically (editable via an online code editor) */
         components: {
             CardsWind,
             FooterWind,
@@ -61,7 +66,6 @@
             NavbarWind,
             ParagraphWind,
             SlantedBreakWind,
-
             Windsock404,
             Windsock504,
             WindsockComponentToolbar,
@@ -69,7 +73,6 @@
             WindsockModalUrl,
             WindsockModalAlert,
             WindsockToolbar,
-
         },
         props: {
             'domain' : {
@@ -138,6 +141,7 @@
                     if (dataReceived.components) this.cmsData.components = dataReceived.components;
                     if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
                     if (dataReceived.content) this.cmsData.content = dataReceived.content;
+                    console.log (this.cmsData);
                     data.callback();
                 }
             },
@@ -222,7 +226,14 @@
                     n[index] = temp;
                 }
                 this.cmsData.components = n;
-            }
+            },
+            removeComponent(id) {
+                this.cmsData.components = this.cmsData.components.filter(function(obj) {
+                    return obj.id !== id;
+                });
+                this.$delete (this.cmsData.layout,id);
+                this.$delete (this.cmsData.content,id);
+            },
         },
         head() {
             return {

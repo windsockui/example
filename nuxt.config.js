@@ -1,7 +1,7 @@
 export default {
-    mode: 'spa',
+    mode: 'spa', /* @TODO: Needs to switch to universal at some stage */
     env: {
-        domain: process.env.DOMAIN || 'www.windsockui.com',
+        //domain: process.env.DOMAIN || window.location.host,
         databaseUrl: process.env.DATABASE_URL || 'http://localhost:8080'
     },
     head: {

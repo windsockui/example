@@ -1,7 +1,7 @@
 <template>
     <section class="w-full h-64 bg-gray-800" @mouseover="componentToolbar=true" @mouseleave="componentToolbar=false">
         <div class="container mx-auto">
-            <slot v-if="componentToolbar && editing" v-on="$listeners" clazz="slot"/>
+            <slot v-if="componentToolbar && editing" v-on="$listeners" clazz="mt-4"/>
         </div>
     </section>
 </template>

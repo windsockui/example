@@ -2,9 +2,9 @@
     <div class="rounded-lg overflow-hidden shadow-lg bg-white">
         <img class="object-cover h-64 w-full" src="https://www.wdb.agency/wp-content/uploads/2019/10/web-content.jpg" alt="Sunset in the mountains">
         <div class="px-6 py-4">
-            <div class="text-xl mb-2 roboto-condensed">Edit your own content</div>
+            <div class="text-xl mb-2 roboto-condensed">Not yet editable</div>
             <p class="text-gray-900 text-base roboto font-thin">
-                You can edit all your own content, on-the-fly. This includes text, images and anything you can imagine. Try it out now! This is as big as they need to go!
+                No particular reason, just ran out of time. If you would like to contribute to this project so we can develop more awesome components, please contact me at mark@flyh2.com
             </p>
         </div>
         <div class="px-6 py-4">

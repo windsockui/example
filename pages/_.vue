@@ -1,5 +1,6 @@
 <template>
-    <windsock-ui :domain="domain"/>
+    <!--@TODO: Disabling Universal. SPA only. Window.location.host ain't going to do it on server... -->
+    <windsock-ui :domain="host"/>
 </template>
 
 <script>
@@ -9,11 +10,8 @@
         name: "index.vue",
         components: {WindsockUi},
         computed: {
-            'domain': function() {
-                return process.env.domain;
-            },
-            'databaseUrl': function() {
-                return process.env.databaseUrl;
+            'host': () => {
+                return window.location.host;
             }
         }
     }
