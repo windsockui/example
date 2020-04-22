@@ -1,20 +1,30 @@
 <template>
     <section>
-        <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent" />
-        <component
-            v-for="(item, index) in cmsData.components"
-            :ref="item.id"
-            v-bind:is="item.title"
-            :key="(item.id)"
-            :editing="editing"
-            v-model="cmsData.content[item.id]"
-            @hook:mounted="addClasses(item.id)"
-            @openModal="openModal"
-            @componentRemove="cmsData.components.splice(index, 1)"
-            @componentUp="moveComponentUp(index)"
-            @componentDown="moveComponentDown(index)"
-        >
-        </component>
+        <transition name="fade">
+            <windsock-toolbar v-if="editing" @close="toolbarCancel" @openModal="openModal" @uploadContent="uploadContent" @addComponent="addComponent"/>
+        </transition>
+        <transition-group name="components" tag="div">
+            <component
+                v-for="(item, index) in cmsData.components"
+                :ref="item.id"
+                :is="item.componentName"
+                :key="(item.id)"
+                :editing="editing"
+                v-model="cmsData.content[item.id]"
+                @openModal="openModal"
+                class="component"
+                @hook:mounted="addClasses(item.id)"
+            >
+                <template slot-scope="{buttons, clazz}">
+                    <windsock-component-toolbar
+                        v-if="editing" :buttons="buttons" :class="clazz"
+                        @componentRemove="cmsData.components.splice(index, 1)"
+                        @componentUp="moveComponentUp(index)"
+                        @componentDown="moveComponentDown(index)"
+                    />
+                </template>
+            </component>
+        </transition-group>
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
         </windsock-modal>
@@ -23,6 +33,7 @@
 <script>
 
     import axios from "axios";
+    import { v5 as uuidv5 } from 'uuid';
 
     // Front-end Components
     import NavbarWind from "@/components/NavbarWind";
@@ -34,6 +45,7 @@
 
     // CMS Components
     import Windsock404 from "@/components/Windsock404";
+    import Windsock504 from "@/components/Windsock504";
     import WindsockToolbar from "@/components/WindsockToolbar";
     import WindsockModal from "@/components/WindsockModal";
     import WindsockModalUrl from "@/components/WindsockModalUrl";
@@ -51,6 +63,7 @@
             SlantedBreakWind,
 
             Windsock404,
+            Windsock504,
             WindsockComponentToolbar,
             WindsockModal,
             WindsockModalUrl,
@@ -106,8 +119,11 @@
 
                 } catch (error) {
                     if (error.response.status === 404) {
-                        this.cmsData.components.push({id:'windsock404',title:'windsock404'});
+                        this.cmsData.components.push({id:'windsock404',componentName:'windsock404'});
+                    } else if (error.response.status === 504) {
+                        this.cmsData.components.push({id:'windsock504',ComponentName:'windsock504'});
                     }
+
                 }
 
             },
@@ -128,7 +144,7 @@
             domainPath() {
                 let path = '';
                 path += '/cms/data/';
-                path += this.domain;
+                path += this.domain; /*@TODO THIS REALLY NEEDS TO BE DYNAMIC! - LOCALHOST IS A BIT PAINFUL*/
                 if (this.$route.path.endsWith("/edit")) {
                     path += this.$route.path.replace('/edit', '');
                 } else {
@@ -145,6 +161,18 @@
                     this.editing = true;
                 }
             },
+            addComponent(componentName) {
+                let uuid = uuidv5('windsockui.com', uuidv5.URL);
+                try {
+                    if (this.cmsData.components.length === 1 && this.cmsData.components[0].componentName === 'windsock404') {
+
+                        this.cmsData.components = [];
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+                this.cmsData.components.push({componentName: componentName, id: uuid});
+            },
             openModal(modalData) {
                 this.modalData = modalData
             },
@@ -157,7 +185,10 @@
                 const path = this.$route.path;
                 if (path.endsWith("/edit")) {
                     const newPath = path.replace("/edit", '')
-                    this.$router.push(newPath == '' ? '/' : newPath);
+                    let self = this;
+                    setTimeout(function () {
+                        self.$router.push(newPath === '' ? '/' : newPath);
+                    }, 500);
                 }
             },
             addClasses(id) {
@@ -203,3 +234,21 @@
         }
     }
 </script>
+<style>
+
+    .component {
+        left: 0;
+    }
+
+    .components-move {
+        opacity: 0.5;
+        transition: transform 0.5s;
+    }
+
+    .components-leave-active {
+        opacity: 0;
+        transition: all 0.5s;
+        left:-2000px
+    }
+
+</style>

@@ -1,6 +1,6 @@
 <template>
     <div class="relative z-10 h-64 md:h-96 lg:h-128 w-full bg-black" @mouseover="componentToolbar=true" @mouseleave="componentToolbar=false">
-        <windsock-component-toolbar v-if="editing && componentToolbar" :buttons="[{icon:'camera', tooltip:'switch image', callback:askImageUrl}]" v-on="$listeners" />
+        <slot v-if="componentToolbar" :buttons="[{icon:'camera', tooltip:'switch image', callback:askImageUrl}]" clazz="mt-4 ml-4" v-on="$listeners"/>
         <div class="absolute z-20 bottom-0 mb-12 md:mb-20 lg:mb-32 ml-8 md:ml-20 text-white">
             <h1 class="text-2xl md:text-4xl font-light roboto-condensed editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'title')" v-text="content.title"></h1>
             <p class="text-lg md:text-2xl roboto mt-1 md:mt-2 font-thin editable" :class="{'editing':editing}" :contenteditable="editing" @blur="update($event, 'subtitle')" v-text="content.subtitle"></p>

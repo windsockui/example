@@ -1,6 +1,6 @@
 <template>
     <div ref="toolbar" class="absolute h-16 z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700 text-md" style="left:calc(100% - 380px); top:50px">
-        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-green-700 hover:text-green-500 cursor-move" @mousedown="[startDrag]" title="drag">
+        <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-green-700 hover:text-green-500 cursor-move" @mousedown="startDrag" title="drag">
             <fa icon="grip-vertical" class="text-md" />
         </div>
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" @click="toolbar.addMenu = !toolbar.addMenu" title="add component">
@@ -20,14 +20,16 @@
         <div class="flex items-center pl-5 pr-5 mt-3 mb-3 border-gray-500 text-gray-500 hover:text-white cursor-pointer" @click="$emit('close')" title="exit editor">
             <fa icon="times" class="text-md" />
         </div>
-        <div class="absolute pt-2 pb-2 bg-black-transparent-85 rounded-lg shadow-lg z-40 mt-12 ml-16 roboto font-thin text-gray-600 cursor-pointer" v-if="toolbar.addMenu">
-            <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'navbar-wind'), toolbar.addMenu = false]">Navbar</div>
-            <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'hero-wind'), toolbar.addMenu = false]">Hero</div>
-            <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'paragraph-wind'), toolbar.addMenu = false]">Paragraph</div>
-            <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'cards-wind'), toolbar.addMenu = false]">Cards</div>
-            <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'slanted-break-wind'), toolbar.addMenu = false]">Separator</div>
-            <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'footer-wind-navbar-wind'), toolbar.addMenu = false]">Footer</div>
-        </div>
+        <transition name="fade">
+            <div class="absolute pt-2 pb-2 bg-black-transparent-85 rounded-lg shadow-lg z-40 mt-12 ml-16 roboto font-thin text-gray-600 cursor-pointer" v-if="toolbar.addMenu">
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'navbar-wind'), toolbar.addMenu = false]">Navbar</div>
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'hero-wind'), toolbar.addMenu = false]">Hero</div>
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'paragraph-wind'), toolbar.addMenu = false]">Paragraph</div>
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'cards-wind'), toolbar.addMenu = false]">Cards</div>
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'slanted-break-wind'), toolbar.addMenu = false]">Separator</div>
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'footer-wind-navbar-wind'), toolbar.addMenu = false]">Footer</div>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -88,17 +90,3 @@
     }
 </script>
 
-<style scoped>
-    @-webkit-keyframes rotating {
-        from{
-            -webkit-transform: rotate(0deg);
-        }
-        to{
-            -webkit-transform: rotate(360deg);
-        }
-    }
-
-    .rotating {
-        -webkit-animation: rotating 2s linear infinite;
-    }
-</style>

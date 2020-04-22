@@ -15,14 +15,8 @@
             'databaseUrl': function() {
                 return process.env.databaseUrl;
             }
-        },
-        head() {
-            return {
-                title:'Hello'
-            }
         }
     }
-
 </script>
 
 <style>

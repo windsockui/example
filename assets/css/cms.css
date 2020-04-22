@@ -1,4 +1,6 @@
 
+/* purgecss start ignore */
+
 *:focus {
     outline: none;
 }
@@ -28,3 +30,26 @@
     border:1px solid rgba(0,0,0,0.5);
     background: rgba(0,0,0,0.9) linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.12) 25%, rgba(255,255,255,0.07) 50%,rgba(255,255,255,0.0) 50%,rgba(255,255,255,0.0) 100%);
 }
+
+/* Rotating (icons) */
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    -webkit-animation: rotating 2s linear infinite;
+}
+
+/* transitions */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+

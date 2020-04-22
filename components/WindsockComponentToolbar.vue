@@ -1,5 +1,5 @@
 <template>
-    <div ref="toolbar" class="absolute z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700 mt-3 ml-3">
+    <div ref="toolbar" class="absolute z-30 rounded-lg flex bg-black-transparent-85 border-2 border-gray-700">
         <div class="flex items-center pl-3 pr-3 mt-2 mb-2 border-r border-gray-500 text-gray-500 hover:text-white cursor-pointer" title="move component up" @click="$emit('componentUp')">
             <fa icon="arrow-up" class="text-md" />
         </div>
@@ -21,6 +21,10 @@
         props: {
             'buttons': {
                 type: Array
+            },
+            'friends' : {
+                type: String,
+                default: 'The friend'
             }
         }
     }

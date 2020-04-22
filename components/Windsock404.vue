@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="relative">
         <div class="flex justify-center items-center h-screen">
             <div class="flex flex-col" @mouseover="componentToolbar=true" @mouseleave="componentToolbar=false">
                 <slot v-if="componentToolbar"/>
