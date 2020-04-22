@@ -37,7 +37,7 @@
 <script>
 
     import axios from "axios";
-    import { v5 as uuidv5 } from 'uuid';
+    import {v4 as uuidv4} from 'uuid';
 
     // Front-end Components
     import NavbarWind from "@/components/NavbarWind";
@@ -165,10 +165,9 @@
                 }
             },
             addComponent(componentName) {
-                let uuid = uuidv5('windsockui.com', uuidv5.URL);
+                let uuid = uuidv4();
                 try {
                     if (this.cmsData.components.length === 1 && this.cmsData.components[0].componentName === 'windsock404') {
-
                         this.cmsData.components = [];
                     }
                 } catch (error) {
