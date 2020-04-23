@@ -154,6 +154,7 @@
                     }
                 } catch (error) {
                     this.cmsData.components.push({id:'windsock404',componentName:'windsock404'});
+                    data.callback();
                 }
             },
             domainPath() {

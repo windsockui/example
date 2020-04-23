@@ -49,8 +49,10 @@
                 this.$emit('openModal', {name:'windsock-modal-url', callback:this.imageUrlSet});
             },
             imageUrlSet(answer) {
-                if (answer.status === 'ok')
+                if (answer.status === 'ok') {
                     this.content.imageUrl = answer.data.url;
+                    this.$emit('input', this.content);
+                }
             }
         }
     }
