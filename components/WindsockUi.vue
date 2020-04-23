@@ -56,11 +56,15 @@
     import WindsockModalAlert from "@/components/WindsockModalAlert";
     import WindsockComponentToolbar from "@/components/WindsockComponentToolbar";
     import ArtemisNavbarWind from "@/components/ArtemisNavbarWind";
+    import ArtemisDevRegWind from "@/components/ArtemisDevRegWind";
+    import ArtemisVarmapWind from "@/components/ArtemisVarmapWind";
 
     export default {
         name: "WindsockUi",
         /* @TODO: These components must all load dynamically (editable via an online code editor) */
         components: {
+            ArtemisVarmapWind,
+            ArtemisDevRegWind,
             ArtemisNavbarWind,
             CardsWind,
             FooterWind,

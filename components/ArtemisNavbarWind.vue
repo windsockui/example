@@ -8,11 +8,11 @@
                     <span class="text-blue-100 neo text-2xl tracking-wider">ARTEMIS</span>
                 </div>
                 <div class="flex text-gray-400 roboto font-thin">
-                    <nuxt-link to="/home" class="flex items-center cursor-pointer hover:text-white pl-2 pr-2">Home</nuxt-link>
-                    <nuxt-link to="/developers" class="flex items-center cursor-pointer hover:text-white pl-2 pr-2">Developer</nuxt-link>
-                    <nuxt-link to="/registration" class="flex items-center cursor-pointer hover:text-white pl-2 pr-2">Developer Registration</nuxt-link>
-                    <nuxt-link to="/mapping-tool" class="flex items-center cursor-pointer hover:text-white pl-2 pr-2">Mapping Tool</nuxt-link>
-                    <nuxt-link to="/contact-us" class="flex items-center cursor-pointer hover:text-white pl-2 pr-2">Contact Us</nuxt-link>
+                    <nuxt-link to="/home" class="flex items-center hover:cursor-pointer hover:text-white pl-2 pr-2">Home</nuxt-link>
+                    <nuxt-link to="/developers" class="flex items-center hover:cursor-pointer hover:text-white pl-2 pr-2">Developer</nuxt-link>
+                    <nuxt-link to="/registration" class="flex items-center hover:cursor-pointer hover:text-white pl-2 pr-2">Developer Registration</nuxt-link>
+                    <nuxt-link to="/mapping-tool" class="flex items-center hover:cursor-pointer hover:text-white pl-2 pr-2">Mapping Tool</nuxt-link>
+                    <nuxt-link to="/contact-us" class="flex items-center hover:cursor-pointer hover:text-white pl-2 pr-2">Contact Us</nuxt-link>
                 </div>
                 <div class="flex text-gray-400 flex-grow justify-end items-center"><a href="https://ndoh.rsahealth.org/magi/#/auth/login-page" target="_blank" class="cursor-pointer hover:text-white pl-4 hover:text-white pl-4">Login</a></div>
             </div>
