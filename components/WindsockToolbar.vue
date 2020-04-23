@@ -23,6 +23,7 @@
         <transition name="fade">
             <div class="absolute pt-2 pb-2 bg-black-transparent-85 rounded-lg shadow-lg z-40 mt-12 ml-16 roboto font-thin text-gray-600 cursor-pointer" v-if="toolbar.addMenu">
                 <!-- @TODO: This needs to be dynamic based on the components available. At the moment the components are 'hard'. Need to make them soft (as in a DB). -->
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'artemis-navbar-wind'), toolbar.addMenu = false]">Artemis Navbar</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'navbar-wind'), toolbar.addMenu = false]">Navbar</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'hero-wind'), toolbar.addMenu = false]">Hero</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'paragraph-wind'), toolbar.addMenu = false]">Paragraph</div>

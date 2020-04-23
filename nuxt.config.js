@@ -15,7 +15,7 @@ export default {
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
             {
                 rel: 'stylesheet',
-                href: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400'
+                href: 'https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Roboto:wght@300;400&family=GFS+Neohellenic'
             }
         ]
     },

@@ -14,6 +14,11 @@
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+/** @TODO: This is very bad. Including client sites in here **/
+.neo {
+    font-family: 'GFS Neohellenic', serif;
+}
+
 .flip-x {
     transform: scaleX(-1);
 }

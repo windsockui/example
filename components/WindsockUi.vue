@@ -26,9 +26,9 @@
                 </template>
             </component>
         </transition-group>
-        <!--
+
         <pre class="text-white">{{cmsData}}</pre>
-        -->
+
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
         </windsock-modal>
@@ -55,11 +55,13 @@
     import WindsockModalUrl from "@/components/WindsockModalUrl";
     import WindsockModalAlert from "@/components/WindsockModalAlert";
     import WindsockComponentToolbar from "@/components/WindsockComponentToolbar";
+    import ArtemisNavbarWind from "@/components/ArtemisNavbarWind";
 
     export default {
         name: "WindsockUi",
         /* @TODO: These components must all load dynamically (editable via an online code editor) */
         components: {
+            ArtemisNavbarWind,
             CardsWind,
             FooterWind,
             HeroWind,
@@ -72,7 +74,8 @@
             WindsockModal,
             WindsockModalUrl,
             WindsockModalAlert,
-            WindsockToolbar,
+            WindsockToolbar
+
         },
         props: {
             'domain' : {
@@ -108,6 +111,8 @@
         },
         methods: {
             async fetchContent() {
+
+                /* @TODO uploadContent() and fetchContent() both duplicate the fetchContent code */
                 let result = null;
                 try {
                     result = await axios.get (this.domainPath());
@@ -125,23 +130,30 @@
                         this.cmsData.components.push({id:'windsock404',componentName:'windsock404'});
                     } else if (error.response.status === 504) {
                         this.cmsData.components.push({id:'windsock504',ComponentName:'windsock504'});
+                    } else {
+                        //@TODO: We need a CONNECTION REFUSED error in here (server missing)
+                        console.log ("We need a CONNECTION REFUSED error in here (server missing)");
                     }
 
                 }
 
             },
             async uploadContent(data) {
-                const result = await axios.put(this.domainPath(), this.cmsData);
-                let dataReceived = result.data.json;
-                if (result.status === 200) {
-                    if (dataReceived.page) {
-                        this.cmsData.page = dataReceived.page;
-                        this.pageTitle = this.cmsData.page.title;
+                try {
+                    const result = await axios.put(this.domainPath(), this.cmsData);
+                    let dataReceived = result.data.json;
+                    if (result.status === 200) {
+                        if (dataReceived.page) {
+                            this.cmsData.page = dataReceived.page;
+                            this.pageTitle = this.cmsData.page.title;
+                        }
+                        if (dataReceived.components) this.cmsData.components = dataReceived.components;
+                        if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
+                        if (dataReceived.content) this.cmsData.content = dataReceived.content;
+                        data.callback();
                     }
-                    if (dataReceived.components) this.cmsData.components = dataReceived.components;
-                    if (dataReceived.layout) this.cmsData.layout = dataReceived.layout;
-                    if (dataReceived.content) this.cmsData.content = dataReceived.content;
-                    data.callback();
+                } catch (error) {
+                    this.cmsData.components.push({id:'windsock404',componentName:'windsock404'});
                 }
             },
             domainPath() {
