@@ -1,5 +1,6 @@
 <template>
-    <section class="container mx-auto">
+    <section class="relative container mx-auto mt-12" @mouseover="componentToolbar=true" @mouseleave="componentToolbar=false">
+        <slot v-if="componentToolbar && editing" v-on="$listeners" clazz="relative float-right mr-4 mt-4"/>
         <div class="bg-blue-900 rounded-lg shadow-lg p-4 text-white">
             <h2 class="roboto-condensed text-2xl font-thin">Developer Registration</h2>
             <p class="roboto font-thin mt-6 text-gray-400">Please register using the form below. Keep an eye in your inbox for the welcome email.</p>
@@ -38,7 +39,18 @@
 
 <script>
     export default {
-        name: "ArtemisDevRegWind"
+        name: "ArtemisDevRegWind",
+        data() {
+            return {
+                componentToolbar:true
+            }
+        },
+        props: {
+            "editing": {
+                type: Boolean,
+                default: false,
+            }
+        }
     }
 </script>
 
