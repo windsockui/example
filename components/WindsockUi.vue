@@ -27,7 +27,9 @@
             </component>
         </transition-group>
 
+        <!--
         <pre class="text-white">{{cmsData}}</pre>
+        -->
 
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>

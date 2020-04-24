@@ -4,6 +4,7 @@
             <h2 class="roboto-condensed text-2xl font-thin">Developer Registration</h2>
             <p class="roboto font-thin mt-6 text-gray-400">Please register using the form below. Keep an eye in your inbox for the welcome email.</p>
             <div class="flex flex-row mt-6">
+                <!-- @TODO: Add the label tags -->
                 <div class="flex w-32 justify-end pr-2 font-thin roboto text-gray-400">first name</div>
                 <div><input class="inline-block text-gray-900 rounded shadow-inner text-sm p-1 bg-gray-300"/></div>
 
@@ -27,11 +28,10 @@
             <div class="flex flex-row mt-6">
                 <div class="flex w-32"></div>
                 <div>
-                    <input type="button" value="Register" class="border border-white p-2 rounded-lg cursor-pointer bg-transparent roboto font-thin hover:bg-blue-700 hover:shadow-md"/>
+                    <input type="button" value="Register" class="border border-white p-2 rounded-lg cursor-pointer bg-transparent roboto font-thin hover:bg-blue-700 hover:shadow-md" @click="$emit('openModal', {name:'windsock-modal-alert', data:'Registration complete!'})"/>
                 </div>
             </div>
         </div>
-
 
     </section>
 </template>
