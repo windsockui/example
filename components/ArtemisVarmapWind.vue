@@ -39,7 +39,7 @@
                 </div>
                 <div class="flex flex-col w-64 pr-2">
                     <div class="" v-for="(variable, index) in selected">
-                        <input :value="variable.var || selected[index].key" @change="updateVariable(index, $event)" @focusout="updateVariable(index, $event)" type="text" class="flex h-8 bg-gray-400 items-center overflow-hidden border border-white mb-2 pl-2 rounded-lg hover:cursor-pointer bg-transparent text-black roboto text-sm font-thin flex-grow items-center">
+                        <input :value="variable.var" @change="updateVariable(index, $event)" @focusout="updateVariable(index, $event)" type="text" class="flex h-8 bg-gray-400 items-center overflow-hidden border border-white mb-2 pl-2 rounded-lg hover:cursor-pointer bg-transparent text-black roboto text-sm font-thin flex-grow items-center">
                     </div>
                 </div>
             </div>
@@ -104,6 +104,7 @@
         methods: {
             select(item) {
                 item.category = this.category;
+                item.var = item.key;
                 this.selected.push(item);
             },
             remove (index) {
