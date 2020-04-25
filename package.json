@@ -1,7 +1,7 @@
 {
-    "name": "windosockui",
+    "name": "windsockui",
     "version": "0.0.9",
-    "description": "WindosckUI front-end inline CMS toolbox",
+    "description": "WindsockUI front-end inline CMS toolbox",
     "author": "Mark van Wyk",
     "private": true,
     "scripts": {

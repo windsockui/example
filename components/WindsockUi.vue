@@ -16,9 +16,9 @@
                 class="component"
                 @hook:mounted="addClasses(item.id)"
             >
-                <template slot-scope="{buttons, clazz}">
+                <template slot-scope="{buttons, clazz, disabled}">
                     <windsock-component-toolbar
-                        v-if="editing" :buttons="buttons" :class="clazz"
+                        v-if="editing" :buttons="buttons" :class="clazz" :disabled="disabled"
                         @componentRemove="removeComponent(item.id)"
                         @componentUp="moveComponentUp(index)"
                         @componentDown="moveComponentDown(index)"
@@ -27,9 +27,7 @@
             </component>
         </transition-group>
 
-        <!--
         <pre class="text-white">{{cmsData}}</pre>
-        -->
 
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>

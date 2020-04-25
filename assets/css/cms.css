@@ -7,17 +7,17 @@
 
 /* Preserve the border width so that stuff doesn't jump around when the border is not visible */
 .editable {
-    border: 1px dashed rgba(255,255,255,0);
+    border: 1px dashed rgba(127,127,127,0);
 }
 
 /* dashed semi-visible on hover to indicate an item is editable */
 .editable.editing:hover {
-    border: 1px dashed rgba(255,255,255,0.5);
+    border: 1px dashed rgba(127,127,127,0.5);
 }
 
 /* dashed fully-visible on focus to indicate that an item is being edited */
 .editable.editing:focus {
-    border: 1px dashed rgba(255,255,255,1);
+    border: 1px dashed rgba(127,127,127,1);
 }
 
 /* Moving the little toolbar around is impossible */
