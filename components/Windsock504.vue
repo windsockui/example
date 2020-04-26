@@ -5,7 +5,7 @@
                 <slot v-if="componentToolbar"/>
                 <div class="flex justify-center text-massive text-gray-300 roboto-condensed">504</div>
                 <div class="flex justify-center text-4xl text-gray-500 font-thin">Could not reach server</div>
-                <div class="flex justify-center text-2xl text-gray-500 font-thin">Please try again later</div>
+                <div class="flex justify-center text-2xl text-gray-500 font-thin">Refresh in a few seconds</div>
             </div>
         </div>
     </section>

@@ -27,7 +27,9 @@
             </component>
         </transition-group>
 
+        <!--
         <pre class="text-white">{{cmsData}}</pre>
+        -->
 
         <windsock-modal v-if="modalData.name">
             <component :is="modalData.name" @answer="modalAnswered" :data="modalData.data"/>
@@ -115,7 +117,6 @@
         },
         methods: {
             async fetchContent() {
-
                 /* @TODO uploadContent() and fetchContent() both duplicate the fetchContent code */
                 let result = null;
                 try {
@@ -133,10 +134,9 @@
                     if (error.response.status === 404) {
                         this.cmsData.components.push({id:'windsock404',componentName:'windsock404'});
                     } else if (error.response.status === 504) {
-                        this.cmsData.components.push({id:'windsock504',ComponentName:'windsock504'});
+                        this.cmsData.components.push({id:'windsock504',componentName:'windsock504'});
                     } else {
-                        //@TODO: We need a CONNECTION REFUSED error in here (server missing)
-                        console.log ("We need a CONNECTION REFUSED error in here (server missing)");
+                        console.log ('ERROR:' + error);
                     }
 
                 }
