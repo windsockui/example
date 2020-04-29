@@ -44,7 +44,7 @@ services:
             - samplenet
 
     example:
-        image: windsockui/example:0.1
+        image: windsockui/example
         environment:
             DOMAIN : "localhost"
             DATABASE_URL : "http://datastore:8080"
