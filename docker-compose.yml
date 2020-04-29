@@ -4,15 +4,18 @@ services:
   datastore:
     image: windsockui/datastore
     ports:
-      - "3000:3000"
+        - "8080:8080"
     networks:
-    - samplenet
+        - samplenet
     restart: always
 
   example:
     image: windsockui/example
+    environment:
+        DOMAIN : "localhost"
+        DATABASE_URL : "http://datastore:8080"
     ports:
-      - "8080:8080"
+        - "3000:3000"
     depends_on:
       - datastore
     networks:
