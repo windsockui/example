@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  datastore:
+    image: windsockui/datastore
+    ports:
+      - "3000:3000"
+    networks:
+    - samplenet
+    restart: always
+
+  example:
+    image: windsockui/example
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbcontainer
+    networks:
+      - samplenet
+    restart: always
+
+networks:
+  samplenet:
+    driver: bridge
