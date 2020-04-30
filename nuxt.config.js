@@ -81,12 +81,12 @@ export default {
             config.resolve.alias['vue'] = 'vue/dist/vue.common'
         }
     },
-    
+    /*
     server: {
         port: process.env.HOST_PORT || 3000, // default: 3000
         host: process.env.HOST_DOMAIN || '0.0.0.0' // default: localhost
     }
     // other configs
-      
+      */
 
 }
