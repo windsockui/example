@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+    datastore:
+        image: windsockui/datastore
+        ports:
+            - "8080:8080"
+        environment:
+            spring.jpa.show-sql : "false"
+            spring.jpa.generate-ddl : "true"
+            spring.jpa.hibernate.ddl-auto : update
+            server.error.whitelabel.enabled : "false"
+            spring.datasource.url : "jdbc:postgresql://dbcontainer:5432/postgres"
+            spring.datasource.username : "postgres"
+            spring.datasource.password : "postgres"
+        depends_on:
+            - dbcontainer
+        networks:
+            - samplenet
+        #restart: always
+
+    dbcontainer:
+        image: postgres
+        ports:
+            - "5432:5432"
+        #volumes:
+        #  - ./opt/healthconnect/data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_PASSWORD: "postgres"
+        networks:
+            - samplenet
+        #restart: always
+
+    pgadmin:
+        image: dpage/pgadmin4
+        ports:
+            - "8001:80"
+        environment:
+            PGADMIN_DEFAULT_EMAIL : "admin@ndoh.org"
+            PGADMIN_DEFAULT_PASSWORD : "password123"
+        depends_on:
+            - dbcontainer
+        networks:
+            - samplenet
+
+    example:
+        image: windsockui/example
+        environment:
+            DOMAIN : "localhost"
+            DATABASE_URL : "http://datastore:8080"
+        command: npm run dev
+        ports:
+            - "3000:3000"
+        depends_on:
+            - datastore
+        networks:
+            - samplenet
+        #restart: always
+
+networks:
+    samplenet:
+        driver: bridge
