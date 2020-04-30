@@ -23,8 +23,6 @@ services:
         image: postgres
         ports:
             - "5432:5432"
-        #volumes:
-        #  - ./opt/healthconnect/data:/var/lib/postgresql/data
         environment:
             POSTGRES_PASSWORD: "postgres"
         networks:
@@ -46,9 +44,12 @@ services:
     example:
         image: windsockui/example
         environment:
-            DOMAIN : "localhost"
+            NODE_ENV: development
+            DOMAIN : "samplenet"
             DATABASE_URL : "http://datastore:8080"
         command: npm run dev
+        volumes:
+          - .env:/usr/src/app/.env
         ports:
             - "3000:3000"
         depends_on:
