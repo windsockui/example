@@ -164,7 +164,7 @@
             domainPath() {
                 let path = '';
                 path += '/cms/data/';
-                path += this.domain; /*@TODO THIS REALLY NEEDS TO BE DYNAMIC! - LOCALHOST IS A BIT PAINFUL*/
+                path += this.domain;
                 if (this.$route.path.endsWith("/edit")) {
                     path += this.$route.path.replace('/edit', '');
                 } else {
