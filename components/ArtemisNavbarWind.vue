@@ -9,12 +9,12 @@
                     <div class="roboto-condensed font-thin text-sm justify-center pt-1 text-gray-500 tracking-wider">ARTEMIS PROGRAM</div>
                 </div>
                 <div class="flex text-gray-400 roboto font-thin">
-                    <nuxt-link to="/home" class="flex items-center hover:cursor-pointer hover:bg-gray-800 pl-2 pr-2">Home</nuxt-link>
+                    <nuxt-link to="/" class="flex items-center hover:cursor-pointer hover:bg-gray-800 pl-2 pr-2">Home</nuxt-link>
                     <nuxt-link to="/about" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">About</nuxt-link>
                     <nuxt-link to="/developers" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Developer</nuxt-link>
                     <nuxt-link to="/registration" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Registration</nuxt-link>
                     <nuxt-link to="/mapping-wizard" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">FHIR Wizard</nuxt-link>
-                    <nuxt-link to="/mapping-wizard" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Download</nuxt-link>
+                    <nuxt-link to="/mapping-wizard" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Downloads</nuxt-link>
                     <nuxt-link to="/forum" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Forum</nuxt-link>
                     <nuxt-link to="/contact-us" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Contact</nuxt-link>
                 </div>
