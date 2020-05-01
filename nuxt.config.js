@@ -47,7 +47,7 @@ export default {
             solid: [
                 'faGripVertical', 'faUpload', 'faTimes', 'faSave', 'faUndoAlt', 'faCamera',
                 'faCheck', 'faExclamationTriangle', 'faSyncAlt', 'faArrowUp', 'faArrowDown', 'faTrashAlt',
-                'faPlus', 'faAngleRight'
+                'faPlus', 'faAngleRight', 'faChevronRight'
             ]
         }
     },
