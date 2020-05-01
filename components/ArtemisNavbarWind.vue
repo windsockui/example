@@ -9,7 +9,7 @@
                     <nuxt-link to="/" class="hover:cursor-pointer"><img src="https://i.imgur.com/JtKkapg.png" class="flex h-16 p-1"/></nuxt-link>
                     <div class="roboto-condensed font-thin text-sm justify-center pt-1 text-gray-500 tracking-wider">ARTEMIS PROGRAM</div>
                 </div>
-                <div class="flex text-gray-400 roboto font-thin">
+                <div class="flex text-gray-400 roboto font-thin menu">
                     <nuxt-link exact to="/" class="flex items-center hover:cursor-pointer hover:bg-gray-800 pl-2 pr-2">Home</nuxt-link>
                     <nuxt-link exact to="/about" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">About</nuxt-link>
                     <nuxt-link exact to="/developers" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Developer</nuxt-link>
@@ -44,7 +44,7 @@
     }
 </script>
 <style>
-    .artemis-navbar .nuxt-link-active {
+    .artemis-navbar .menu.nuxt-link-active {
         @apply bg-blue-900;
         @apply text-white;
     }
