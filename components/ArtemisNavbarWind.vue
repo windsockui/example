@@ -9,14 +9,14 @@
                     <div class="roboto-condensed font-thin text-sm justify-center pt-1 text-gray-500 tracking-wider">ARTEMIS PROGRAM</div>
                 </div>
                 <div class="flex text-gray-400 roboto font-thin">
-                    <nuxt-link to="/" class="flex items-center hover:cursor-pointer hover:bg-gray-800 pl-2 pr-2">Home</nuxt-link>
-                    <nuxt-link to="/about" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">About</nuxt-link>
-                    <nuxt-link to="/developers" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Developer</nuxt-link>
-                    <nuxt-link to="/registration" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Registration</nuxt-link>
-                    <nuxt-link to="/mapping-wizard" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">FHIR Wizard</nuxt-link>
-                    <nuxt-link to="/mapping-wizard" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Downloads</nuxt-link>
-                    <nuxt-link to="/forum" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Forum</nuxt-link>
-                    <nuxt-link to="/contact-us" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Contact</nuxt-link>
+                    <nuxt-link exact to="/" class="flex items-center hover:cursor-pointer hover:bg-gray-800 pl-2 pr-2">Home</nuxt-link>
+                    <nuxt-link exact to="/about" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">About</nuxt-link>
+                    <nuxt-link exact to="/developers" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Developer</nuxt-link>
+                    <nuxt-link exact to="/registration" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Registration</nuxt-link>
+                    <nuxt-link exact to="/mapping-wizard" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">FHIR Wizard</nuxt-link>
+                    <nuxt-link exact to="/downloads" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Downloads</nuxt-link>
+                    <nuxt-link exact to="/forum" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Forum</nuxt-link>
+                    <nuxt-link exact to="/contact-us" class="flex items-center hover:cursor-pointer hover:text-white hover:bg-gray-800 pl-2 pr-2">Contact</nuxt-link>
                 </div>
                 <div class="flex flex-grow text-gray-400 roboto font-thin justify-end"><a href="https://ndoh.rsahealth.org/magi/#/auth/login-page" target="_blank" class="flex items-center hover:cursor-pointer  hover:text-white hover:bg-gray-800 pl-2 pr-2">Login</a></div>
             </div>
