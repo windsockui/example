@@ -48,6 +48,7 @@
     import ParagraphWind from "@/components/ParagraphWind";
     import CardsWind from "@/components/CardsWind";
     import FooterWind from "@/components/FooterWind";
+    import HtmlWind from "@/components/HtmlWind";
 
     // CMS Components
     import Windsock404 from "@/components/Windsock404";
@@ -68,6 +69,7 @@
             ArtemisVarmapWind,
             ArtemisDevRegWind,
             ArtemisNavbarWind,
+            HtmlWind,
             CardsWind,
             FooterWind,
             HeroWind,

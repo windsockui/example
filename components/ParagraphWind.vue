@@ -33,11 +33,6 @@
         mounted() {
             this.content = this.value;
         },
-        watch: {
-            'content.text' : function (n, o) {
-                this.htmlParagraph = "FUCKING HELL:" + this.content.text;
-            }
-        },
         methods: {
             update(event, item) {
                 this.content[item] = event.target.innerText;

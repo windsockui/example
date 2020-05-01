@@ -69,7 +69,7 @@ export default {
         }]
     ],
     purgeCSS: {
-        whitelist: 'a',
+        whitelist: 'a, .font-mono',
         whitelistPatterns: [/svg.*/],
         //purgeCSSInDev: true
         enabled: true

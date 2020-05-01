@@ -26,6 +26,7 @@
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'artemis-navbar-wind'), toolbar.addMenu = false]">Artemis Navbar</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'artemis-dev-reg-wind'), toolbar.addMenu = false]">Artemis Registration</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'artemis-varmap-wind'), toolbar.addMenu = false]">Artemis Variable Mapper</div>
+                <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'html-wind'), toolbar.addMenu = false]">Html</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'navbar-wind'), toolbar.addMenu = false]">Navbar</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'hero-wind'), toolbar.addMenu = false]">Hero</div>
                 <div class="pt-1 pr-4 pb-1 pl-4 hover:bg-gray-200" @click="[$emit('addComponent', 'paragraph-wind'), toolbar.addMenu = false]">Paragraph</div>
