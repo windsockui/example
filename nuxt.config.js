@@ -54,8 +54,13 @@ export default {
     modules: [
         '@nuxtjs/axios',
         '@nuxtjs/proxy',
+        '@nuxtjs/markdownit',
         'nuxt-purgecss'
     ],
+    markdownit: {
+        injected: true,
+        breaks: true
+    },
     proxy: [
 
         ['/cms', {

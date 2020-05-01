@@ -8,9 +8,11 @@
                 {{content.text}}
             </p>
         </div>
+        <!--
         <div class="px-6 py-4">
             <span v-for="tag in content.tags" class="roboto font-thin inline-block bg-gray-200 rounded-full px-3 py-1 text-sm text-gray-700 mr-2 mt-2">{{tag}}</span>
         </div>
+        -->
     </div>
 </template>
 
