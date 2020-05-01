@@ -41,17 +41,3 @@
         }
     }
 </script>
-
-<style scoped>
-    h1 {
-        @apply text-xl
-    }
-    h2 {
-        @apply text-lg
-    }
-    h2 {
-        @apply text-base
-    }
-
-
-</style>
