@@ -4,8 +4,9 @@
         <section class="container mx-auto -mt-16 relative z-20 artemis-navbar" @mouseover="componentToolbar=true" @mouseleave="componentToolbar=false">
             <slot v-if="componentToolbar && editing" v-on="$listeners" clazz="mt-4 right-0"/>
             <div class="flex w-full border-1 h-16">
-                <div class="relative shadow-lg overflow-visible h-24 w-40 bg-gray-800 flex flex-col flex-shrink-0 justify-center items-center mr-12" :class="{'cursor-pointer':!this.$route.path.endsWith('/edit')}" @click="switchToEdit">
-                    <img src="https://i.imgur.com/JtKkapg.png" class="flex h-16 p-1"/>
+                <!-- EDIT MODE DISABLED :class="{'cursor-pointer':!this.$route.path.endsWith('/edit')}" @click="switchToEdit"-->
+                <div class="relative shadow-lg overflow-visible h-24 w-40 bg-gray-800 flex flex-col flex-shrink-0 justify-center items-center mr-12">
+                    <nuxt-link to="/" class="hover:cursor-pointer"><img src="https://i.imgur.com/JtKkapg.png" class="flex h-16 p-1"/></nuxt-link>
                     <div class="roboto-condensed font-thin text-sm justify-center pt-1 text-gray-500 tracking-wider">ARTEMIS PROGRAM</div>
                 </div>
                 <div class="flex text-gray-400 roboto font-thin">
